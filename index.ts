@@ -2,7 +2,6 @@ import puppeteer, { PDFMargin, PaperFormat } from "puppeteer";
 import { JSXElementConstructor, ReactElement, ReactNode } from 'react'
 import { renderToString } from "react-dom/server";
 import fs from "fs"
-import path from "path"
 
 let defaultMargin: PDFMargin = {
   top: "100px",
