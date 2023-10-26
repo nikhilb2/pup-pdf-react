@@ -42,15 +42,15 @@ const generatePdf = (data) => __awaiter(void 0, void 0, void 0, function* () {
     yield tab.setContent(stringifiedContent, { waitUntil: 'networkidle2' });
     let destination;
     if (data.destination) {
-        destination = process.env.ROOT_DIR + data.destination;
+        destination = data.destination;
     }
     try {
         const fileBuffer = yield tab.pdf({
             path: destination,
             displayHeaderFooter: !!footer || !!header,
-            footerTemplate: footer,
-            format: "A4",
-            headerTemplate: header,
+            footerTemplate: footer ? (0, server_1.renderToString)(footer) : undefined,
+            format: data.paperFormat || "A4",
+            headerTemplate: header ? (0, server_1.renderToString)(header) : undefined,
             printBackground: true,
             margin,
         });
