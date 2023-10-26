@@ -1,4 +1,4 @@
-import puppeteer, { PDFMargin } from "puppeteer";
+import puppeteer, { PDFMargin, PaperFormat } from "puppeteer";
 import { JSXElementConstructor, ReactElement, ReactNode } from 'react'
 import { renderToString } from "react-dom/server";
 import fs from "fs"
@@ -12,13 +12,14 @@ let defaultMargin: PDFMargin = {
 };
 
 export interface GeneratePdfInterface {
-  footer?: string;
-  header?: string;
+  footer?: ReactElement<any, string | JSXElementConstructor<any>>;
+  header?: ReactElement<any, string | JSXElementConstructor<any>>;
   margin?: PDFMargin;
   content: ReactElement<any, string | JSXElementConstructor<any>>,
   cssFilePath?: string;
   cssAsString?: string;
-  destination?: string
+  destination?: string;
+  paperFormat?: PaperFormat
 
 }
 
@@ -62,9 +63,9 @@ const generatePdf = async (data: GeneratePdfInterface) => {
     const fileBuffer = await tab.pdf({
       path: destination,
       displayHeaderFooter: !!footer || !!header ,
-      footerTemplate: footer,
-      format: "A4",
-      headerTemplate: header,
+      footerTemplate: footer ? renderToString(footer) : undefined,
+      format: data.paperFormat || "A4",
+      headerTemplate: header ? renderToString(header) : undefined,
       printBackground: true,
       margin,
     });
