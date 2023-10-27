@@ -28,7 +28,7 @@ export const setDefaultMargin = (margin: PDFMargin) => {
 }
 
 function mergeCssWithContent(data: GeneratePdfInterface) {
-    let css = data.cssAsString
+    let css = data.cssAsString || ""
     if (data.cssFilePath) {
         const filePath = data.cssFilePath;
         css = fs.readFileSync(filePath, "utf8");

@@ -1,6 +1,6 @@
 {
   "name": "pup-pdf-react",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -16,5 +16,9 @@
     "@types/react": "^18.2.33",
     "@types/react-dom": "^18.2.14"
   },
-  "keywords": [ "pdf", "react", "react-pdf" ]
+  "keywords": [ "pdf", "react", "react-pdf" ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nikhilb2/pup-pdf-react"
+}
 }

@@ -27,7 +27,7 @@ const setDefaultMargin = (margin) => {
 };
 exports.setDefaultMargin = setDefaultMargin;
 function mergeCssWithContent(data) {
-    let css = data.cssAsString;
+    let css = data.cssAsString || "";
     if (data.cssFilePath) {
         const filePath = data.cssFilePath;
         css = fs_1.default.readFileSync(filePath, "utf8");
