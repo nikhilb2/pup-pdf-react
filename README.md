@@ -28,6 +28,8 @@ type PaperFormats = "LETTER" | "LEGAL" | "TABLOID" | "LEDGER" | "A0" | "A1" | "A
 
  ## Example
  ```
+ import generatePdf from "pup-pdf-react"
+ 
  generatePdf({
      footer: <Footer />,
      header: <Header />,
